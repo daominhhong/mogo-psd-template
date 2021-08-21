@@ -1,0 +1,167 @@
+.footer{
+    &-top{
+        padding: 7.5rem 0 7rem;
+        @include flexbox(stretch, space-between);
+    }
+    &-column{
+        &:first-child{
+            width: calc(40% - 2.7rem);
+        }
+        &:nth-child(2){
+            width: calc(35% - 2.7rem);
+        }
+        &:last-child{
+            width: calc(25% - 2.7rem);
+        }
+    }
+    &-heading{
+        text-transform: uppercase;
+        font-weight: 500;
+        height: 4rem;
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+    &-heading--logo{
+        text-transform: none;
+        font-size: 4.6rem;
+        font-weight: bold;
+        color: $gray-dark-color;
+        line-height: 0.8;
+        font-weight: 600;
+    }
+    &-desc{
+        font-style: normal;
+        margin-bottom: 4.5rem;
+        margin-top: 2.5rem;
+        @include RowInContent(6);
+    }
+    &-follower{
+        strong{
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $border-color;
+    }
+    &-social{
+        @include flexbox(center);
+        margin-bottom: 3.5rem;
+    }
+    &-social-icon{
+        margin-left: 1.5rem;
+        font-size: 2rem;
+        color: $third-color;
+    }
+    &-form{
+        width: 100%;
+        max-width: 38rem;
+        @include flexbox;
+    }
+    &-form-input{
+        padding: 1.5rem;
+        background-color: #fff;
+        border: 1px solid $border-color;
+        border-right: 0;
+        font-family: $secondary-font;
+        font-size: 1.5rem;
+        font-style: italic;
+        width: 100%;
+        border-radius: 0;
+        line-height: normal;
+    }
+    &-form-button{
+        color: white;
+        text-transform: uppercase;
+        padding: 1.5rem 3.5rem;
+        background-color: $third-color;
+        border: 0;
+        font-weight: bold;
+        font-size: 1.4rem;
+        border-radius: 0;
+    }
+    &-blog{
+        @include flexbox(center);
+        margin-bottom: 3rem;
+        color: $title-color;
+    }
+    &-blog-image{
+        @include boxSize(12rem, 8rem);
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+    &-blog-info{
+        padding-left: 2rem;
+    }
+    &-blog-title{
+        text-transform: uppercase;
+        @include RowInContent(2);
+        line-height: 1.4;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    &-images{
+        @include flexbox(stretch, flex-start, row, wrap);
+        margin-left: -2px;
+        margin-bottom: 2rem;
+    }
+    &-image{
+        width: calc(33.33% - 2px);
+        object-fit: cover;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        padding-bottom: calc(33.33% - 2px);
+        height: 0;
+        position: relative;
+        img{
+            @include boxSize(100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    &-bottom{
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid $border-color;
+        span{
+            color: $primary-color;
+        }
+    }
+    &-images-more{
+        color: $title-color;
+    }
+    @include maxScreen(1023px){
+        &-top{
+            padding: 4rem 0;
+            display: block;
+        }
+        &-column:not(:nth-child(99)){
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        &-column:last-child{
+            margin-bottom: 0;
+        }
+    }
+    @include maxScreen(767px){
+        &-social{
+            flex-direction: column;
+            margin-bottom: 3rem;
+        }
+        &-social-text{
+            margin-bottom: 2rem;
+        }
+        &-social-icon{
+            margin-left: 1rem;
+            font-size: 1.8rem;
+        }
+        &-form{
+            max-width: none;
+        }
+        &-form-button{
+            padding: 1.5rem;
+        }
+    }
+}

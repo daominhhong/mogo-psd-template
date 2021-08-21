@@ -1,0 +1,118 @@
+.story{
+    padding: 10rem 0;
+    &-list{
+        @include flexbox(stretch, space-between);
+        margin-left: -3rem;
+    }
+    &-item{
+        margin-left: 3rem;
+        width: calc( 33.3% - 2rem);
+    }
+    &-image{
+        @include boxSize(100%, 28rem);
+        object-fit: cover;
+    }
+    &-media{
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    &-date{
+        position: absolute;
+        padding: 2rem 2.5rem;
+        background-color: $third-color;
+        @include flexbox(center, center, column);
+        color: white;
+        left: -1rem;
+        bottom: 1rem;
+        z-index: 2;
+        &-number{
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        &-text{
+            color: white;
+        }
+    }
+    &-title{
+        text-transform: uppercase;
+        line-height: 1.4;
+        @include RowInContent(2);
+        margin-bottom: 2rem;
+    }
+    &-desc{
+        font-style: normal;
+
+        @include RowInContent(6);
+    }
+    &-meta{
+        @include flexbox(center);
+        color: $third-color;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e5e5;
+    }
+    &-meta-item{
+        margin-right: 2rem;
+    }
+    &-meta-icon{
+        margin-right: 0.5rem;
+    }
+    @include maxScreen(1023px){
+        padding: 5rem 0;
+        &-image{
+            height: 14rem
+        }
+        &-date{
+            padding: 1rem 1.5rem;
+            &-number{
+                font-size: 2.5rem;
+            }
+        }
+        &-title{
+            font-size: 1.3rem;
+        }
+        &-desc{
+            font-size: 1.3rem;
+        }
+    }
+    @include maxScreen(767px){
+        padding: 3rem 0 0;
+        &-list{
+            display: block;
+            margin: 0;
+        }
+        &-item{
+            margin: 0 0 4rem;
+            width: 100%;
+        }
+        &-image{
+            height: auto;
+        }
+    }
+}
+
+.map{
+    background: linear-gradient(to bottom, rgba(white, 0.7), rgba(white, 0.6)),
+    url("../images/img-map.png") no-repeat center / cover;
+    &-item{
+        @include flexbox(center, center, column);
+        padding: 6rem 0;
+    }
+    &-image{
+        @include boxSize(2rem, 2.5rem);
+    }
+    &-heading{
+        color: $primary-color;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        padding: 2rem 0;
+        font-weight: bold;
+        position: relative;
+        &::before {
+          content: "";
+          @include boxSize(7.5rem, 0.4rem);
+          @include itemCenter2((direction: "bottom"));
+          background-color: $primary-color;
+        }
+    }
+}

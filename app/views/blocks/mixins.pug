@@ -1,0 +1,114 @@
+mixin headerMenu(mogoHeader)
+    li.header-menu-item
+        a.header-menu-link(class= mogoHeader.active, href= mogoHeader.href)= mogoHeader.title 
+
+mixin headerBottomItem(mogoHeader)
+    .header-bottom-item(class= mogoHeader.active)
+        span.header-bottom-number= mogoHeader.number
+        span.header-bottom-text= mogoHeader.text
+
+mixin blockBox(caption, heading, desc)
+    .block-Box
+        h3.block-Box-caption= caption
+        h2.block-Box-heading= heading
+        if desc 
+            p.block-Box-desc= desc
+    
+mixin aboutItem(about)
+    .about-item 
+        img.about-image(src= about.src, alt= about.alt)
+        .about-content 
+            i.about-icon(class= about.icon)
+            span.about-title= about.title 
+
+mixin numberblock(count= "", text= "")
+    .number-item 
+        h2.number-item-count= count
+        span.number-item-text= text
+
+mixin serviceblock(src, title, desc)
+    .service-item
+        img.service-item-icon(src= src) 
+        .service-info 
+            .service-info-title= title
+            .service-info-desc= desc
+
+mixin wedoblock(src= "", title= "", text= "", active= "")
+    .wedo-item(class= active)
+        .wedo-item-header
+            img(src= src).wedo-item-icon
+            span.wedo-item-title= title 
+            i.fal.fa-angle-down.wedo-item-arrow
+        .wedo-item-content
+            .wedo-item-text= text
+
+mixin socialItem (facebook= "#", youtube= "#", twitter= "#", instagram= "#")
+    .team-social 
+        .team-social-item 
+            a.team-social-link(href= facebook)
+                i.fab.fa-facebook-f
+        .team-social-item 
+            a.team-social-link(href= youtube)
+                i.fab.fa-youtube
+        .team-social-item 
+            a.team-social-link(href= twitter)
+                i.fab.fa-twitter
+        .team-social-item 
+            a.team-social-link(href= instagram)
+                i.fab.fa-instagram
+
+mixin teamblock(src= "./images/img-team1.png", name= "Christopher John", position= "Design Team")
+    .team-item 
+        .team-main 
+            img(src= src).team-image
+            .team-content 
+                if block 
+                    block
+        .team-info 
+            h3.team-name= name
+            span.team-position= position
+
+mixin workblock(src= "./images/img-work1.png", title= "Creatively Designer", desc= "Lorem ipsum dolor", icon= "fa fa-home", full= "")
+    .work-item(class= full)
+        img.work-image(src= src)
+        .work-content 
+            i.work-icon(class= icon)
+            h3.work-title= title
+            span.work-desc.text.text-light= desc
+
+mixin peopleblock(src= "./images/img-people1.png", name= "Hong", job= "Frontend Developer", desc= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
+    li.people-item 
+        img.people-avata(src= src)
+        .people-info 
+            h3.people-name= name 
+            span.people-job.text.text--light= job
+            p.people-desc.text= desc
+
+mixin storyblock(src= "./images/img-blog3.png", dateNumber= 1, dateText= "Jan", title= "Lorem Ipsum is simply", desc= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting", views= 0, comments= 0)
+    li.story-item 
+        .story-media 
+            img.story-image(src= src)
+            .story-date
+                h3.story-date-number= dateNumber
+                span.story-date-text.text.text--light= dateText 
+        .story-content 
+            .story-title= title
+            .story-desc.text=  desc
+            .story-meta
+                .story-meta-item 
+                    i.fa.fa-eye.story-meta-icon 
+                    span.story-meta-number.text= views
+                .story-meta-item 
+                    i.fa.fa-comment.story-meta-icon 
+                    span.story-meta-number.text= comments
+
+mixin quoteblock(src= "./images/img-quote.png", type= true, desc= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.", author= "Daniel Joe")
+    .quote-item 
+        if type
+            .quote-icon
+                img(src= src)
+        else 
+            img(src= src).quote-image
+        .quote-info 
+            p.quote-desc= desc
+            span.quote-author= author

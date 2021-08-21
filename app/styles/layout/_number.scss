@@ -1,0 +1,53 @@
+.number {
+    background-color: $third-color;
+  &-list {
+    @include flexbox;
+  }
+  &-item {
+    padding: 8.5rem 3.5rem;
+    color: white;
+    width: 20%;
+    border-left: 1px solid white;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  &-item:last-child {
+    border-right: 1px solid white;
+  }
+  &-item-count {
+    font-size: 7.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  &-item-text{
+    line-height: 1.4;
+  }
+  @include maxScreen(1023px){
+    .number-item{
+      padding: 4rem 0;
+    }
+    .number-item-count {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  @include maxScreen(767px){
+    .number-list{
+      display: block;
+    }
+    .number-item{
+      width: 100%;
+      border-left: 0;
+      padding: 2rem 0;
+    }
+    .number-item:last-child{
+      border-right: 0;
+    }
+    .number-item:not(:last-child){
+      border-bottom: 1px solid white;
+    }
+    .number-item-count{
+      font-size: 4rem;
+    }
+  }
+}

@@ -1,0 +1,208 @@
+// response theo max screen
+@mixin maxScreen($value) {
+  @media screen and (max-width: $value) {
+    @content;
+  }
+}
+// response theo min screen
+@mixin minScreen($value) {
+  @media screen and (min-width: $value) {
+    @content;
+  }
+}
+// taokich thuoc cho khoi
+@mixin boxSize($width: 0, $height: $width) {
+  width: $width;
+  height: $height;
+}
+// flex box
+@mixin flexbox(
+  $align: stretch,
+  $justify: flex-start,
+  $flex_drirection: row,
+  $wrap: nowrap,
+  $flex: flex
+) {
+  display: $flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $flex_drirection;
+  flex-wrap: $wrap;
+}
+// so hang hien thi trong noi dung
+@mixin RowInContent($rows: 1, $all: "", $size: 100%) {
+  display: -webkit-box;
+  -webkit-line-clamp: $rows;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $size;
+  max-width: $size;
+  white-space: pre-wrap;
+  @if $all == "all" {
+    word-break: break-all;
+  }
+}
+// canh giua theo cac vi tri center, top, left, right, bottom
+@mixin itemCenter($direction: "center", $position: absolute) {
+  position: $position;
+  // canh giua ben trai
+  @if $direction == "left" {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  // canh giua ben phai
+  @if $direction == "right" {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  // canh giua ben tren
+  @if $direction == "top" {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  // canh giua ben tren
+  @if $direction == "bottom" {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  // canh giua trung tam
+  @if $direction == "center" {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+// absolute full
+@mixin absoluteFull() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+// an thanh truot ngang
+@mixin hideScrollbar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+// mixin doi mau nen cua anh
+@mixin hoverEffect($itemClass, $contentClass, $translate: "true") {
+  #{$itemClass} {
+    position: relative;
+    z-index: 1;
+    & > * {
+      transition: all 0.25s linear;
+      //will-change: transform;
+    }
+    @if ($translate == "true") {
+      &::before {
+        content: "";
+        @include absoluteFull();
+        background-color: $third-color;
+        z-index: -1;
+        transition: all 0.25s linear;
+      }
+    }
+    &:hover {
+      #{$contentClass} {
+        opacity: 1;
+        visibility: visible;
+      }
+      //will-change: transform;
+      @if ($translate == "true") {
+        & > * {
+          transform: translate(-1rem, -1rem);
+        }
+        // transform: translate(-1rem, -1rem);
+        // &::before {
+        //   transform: translate(1rem, 1rem);
+        // }
+      }
+    }
+  }
+  #{$contentClass} {
+    @include absoluteFull();
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s linear;
+    z-index: 2;
+    @include flexbox(center, center, column, wrap);
+    background-image: linear-gradient(
+      to bottom,
+      rgba($primary-color, 0.8),
+      rgba($secondary-color, 0.8)
+    );
+  }
+}
+// scroll images
+@mixin ScrollImages($width: 80%, $gap: 2rem, $padding: 1rem) {
+  display: grid !important;
+  justify-content: flex-start !important;
+  grid-auto-columns: $width;
+  grid-auto-flow: column;
+  grid-template-columns: unset;
+  grid-column-gap: $gap;
+  overflow-x: auto;
+  padding: $padding;
+  @include hideScrollbar();
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  & > * {
+    //doi tuong con truc tiep
+    scroll-snap-align: center;
+    width: auto;
+  }
+}
+
+// viet mixin dung object
+@mixin itemCenter2($config: ()) {
+  // Extending the default arguments with the given object
+  $config: extend(
+    (
+      direction: "center",
+      position: absolute,
+    ),
+    $config
+  );
+  // gasn gia tri
+  position: map-get($config, position);
+  // canh giua ben trai
+  $direction: map-get($config, direction);
+  @if $direction == "left" {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  // canh giua ben phai
+  @if $direction == "right" {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  // canh giua ben tren
+  @if $direction == "top" {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  // canh giua ben tren
+  @if $direction == "bottom" {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  // canh giua trung tam
+  @if $direction == "center" {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

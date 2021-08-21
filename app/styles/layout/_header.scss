@@ -1,0 +1,211 @@
+//- header -> header-top -> header-content -> header-bottom
+.header {
+  min-height: 100rem;
+  background: linear-gradient(
+      to bottom,
+      rgba($primary-color, 0.8),
+      rgba($secondary-color, 0.8)
+    ),
+    url("../images/img-header-bg.jpg") no-repeat center / cover;
+  &-logo {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .header-toggle{
+    display: none;
+    font-size: 2rem;
+    color: white;
+  }
+  &-menu {
+    @include flexbox(stretch);
+    &-link {
+      color: white;
+      text-transform: uppercase;
+      transition: all 0.2s linear;
+      cursor: pointer;
+    }
+    &-icon {
+      color: white;
+      cursor: pointer;
+    }
+  }
+  &-top {
+    padding-top: 3rem;
+    @include flexbox(baseline, space-between);
+  }
+  &-content {
+    padding-top: 17rem;
+    text-align: center;
+    color: white;
+    max-width: 80rem;
+    margin: 0 auto;
+    &-caption {
+      font-family: $third-font;
+      font-size: 7.2rem;
+      margin-bottom: 3.5rem;
+    }
+    &-main {
+      font-size: 15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+      position: relative;
+      &::before {
+        content: "";
+        @include itemCenter("bottom");
+        @include boxSize(5rem, 0.5rem);
+        background-color: white;
+      }
+    }
+    &-more {
+      padding: 1rem 3rem;
+      border: 5px solid white;
+      text-transform: uppercase;
+      display: inline-block;
+      font-weight: bold;
+    }
+  }
+  &-bottom {
+    margin-top: 15rem;
+    padding-bottom: 3rem;
+    @include flexbox(baseline, space-between, row, wrap);
+    &-item {
+      color: white;
+      width: calc(25% - 3rem);
+      margin-right: 3rem;
+      padding-top: 2.5rem;
+      border-top: 0.5rem solid #fff;
+      opacity: 0.6;
+      cursor: pointer;
+      transition: all 0.2s linear;
+      position: relative;
+      &::before {
+        content: "";
+        @include boxSize(7rem, 0.5rem);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        background-color: $primary-color;
+        transition: all 0.2s linear;
+        opacity: 0;
+      }
+    }
+    &-item:hover,
+    &-item.is-active {
+      opacity: 1;
+      &::before {
+        opacity: 1;
+      }
+    }
+    &-number {
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+    &-text {
+      font-size: 1.8rem;
+      margin-left: 1rem;
+      text-transform: uppercase;
+    }
+  }
+  
+  @include minScreen(768px){
+    .header{
+      &-menu {
+        &-link {
+          color: white;
+          border-bottom: 3px solid transparent;
+          padding-bottom: 1rem;
+          transition: all 0.2s linear;
+          cursor: pointer;
+          &.is-active, 
+          &:hover {
+            color: $secondary-color;
+            border-bottom-color: $secondary-color;
+          }
+        }
+        &-item:not(:first-child) {
+          margin-left: 5rem;
+        }
+      }
+    }
+  }
+
+  @include maxScreen(1023px) {
+    min-height: unset;
+    .container {
+      padding: 0 25px;
+    }
+    .header-content {
+      padding-top: 10rem;
+    }
+    .header-bottom {
+      margin-top: 10rem;
+    }
+    .header-content-main {
+      font-size: 11rem;
+    }
+  }
+
+  @include maxScreen(767px){
+    .header-bottom-text
+    {
+      display: none;
+    }
+    .header-content {
+      padding-top: 5rem;
+    }
+    .header-content-caption {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .header-content-main {
+      font-size: 5rem;
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+    }
+    .header-bottom {
+      margin-top: 7rem;
+    }
+    .header-bottom-item::before {
+      width: 35%;
+    }
+    .header-bottom-item {
+      width: calc(25% - 2rem);
+      margin-right: 1rem;
+      text-align: center;
+    }
+    .header-menu{
+      background-color: #fff;
+      position: fixed;
+      display: block;
+      width: 25rem;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      padding: 2rem;
+      transition: all 0.2s ease;
+      transform: translateX(100%);
+    }
+    .header-menu.is-expand{
+      transform: translateX(0);
+    }
+    .header-menu-link{
+      color: $primary-color;
+      display: block;
+      padding: 1.5rem;
+      &:hover{
+        background-color: $secondary-color;
+        border-radius: 0.5rem;
+      }
+    }
+    .header-toggle{
+      display: inline-block;
+      align-self: center;
+    }
+  }
+}

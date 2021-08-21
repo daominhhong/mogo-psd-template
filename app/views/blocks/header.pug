@@ -1,0 +1,62 @@
+.header 
+    .container 
+        .header-top
+            a.header-logo(href="index.html") MoGo
+            i.fa.fa-bars.header-toggle
+            ul.header-menu
+                +headerMenu({
+                    title: "About",
+                    src: "#",
+                    active: "is-active",
+                })
+                +headerMenu({
+                    title: "Service",
+                    src: "#",
+                    active: "",
+                })
+                +headerMenu({
+                    title: "Work",
+                    src: "#",
+                    active: "",
+                })
+                +headerMenu({
+                    title: "Blog",
+                    src: "#",
+                    active: "",
+                })
+                +headerMenu({
+                    title: "Contacts",
+                    src: "#",
+                    active: "",
+                })
+                li.header-menu-item 
+                    a.header-menu-icon(href="#")
+                        i.fa.fa-shopping-cart  
+                li.header-menu-item 
+                    a.header-menu-icon(href="#")
+                        i.fa.fa-search  
+        .header-content 
+            .header-content-caption Creative Template 
+            .header-content-main Welcome to Mogo 
+            a.header-content-more(href="#") Learn more
+        .header-bottom 
+            +headerBottomItem({
+                number: "01",
+                text: "Intro",
+                active: "is-active",
+            })
+            +headerBottomItem({
+                number: "02",
+                text: "Work",
+                active: "",
+            })
+            +headerBottomItem({
+                number: "03",
+                text: "About",
+                active: "",
+            })
+            +headerBottomItem({
+                number: "04",
+                text: "Contracts",
+                active: "",
+            })

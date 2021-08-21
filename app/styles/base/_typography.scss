@@ -1,0 +1,20 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+// tao cac class (title, text, avata) thuong dung (font, style, weight, line-height, font-family)
+// trong project de tai su dung
+.text{
+  font-family: $secondary-font;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: $text-color;
+}
+
+.text--light{
+  font-weight: 300;
+}
+
+.text--normal{
+  font-style: normal;
+}
